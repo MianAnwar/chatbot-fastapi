@@ -64,10 +64,10 @@ def get_weather_function_chat():
 
 @app.post("/generate")
 async def generate_text(request: PromptRequest):
+    """ Endpoint to generate text based on the provided prompt."""
     messages = [
         {"role": "system", "content": "You are a helpful assistant. Reponse only in markdown format."},
     ]
-    """ Endpoint to generate text based on the provided prompt."""
     # Call GPT model
     messages.append({"role": "user", "content": request.prompt})
     response = client.chat.completions.create(
